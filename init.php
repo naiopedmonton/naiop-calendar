@@ -1,23 +1,18 @@
 <?php
 /**
- * My Calendar, Accessible Events Manager for WordPress
- *
- * @package     MyCalendar
- * @author      Joe Dolson
- * @copyright   2009-2024 Joe Dolson
- * @license     GPL-2.0+
+ * NAIOP Calendar
  *
  * @wordpress-plugin
- * Plugin Name: My Calendar
- * Plugin URI:  http://www.joedolson.com/my-calendar/
- * Description: Accessible WordPress event calendar plugin. Show events from multiple calendars on pages, in posts, or in widgets.
- * Author:      Joseph C Dolson
- * Author URI:  http://www.joedolson.com
- * Text Domain: my-calendar
+ * Plugin Name: NAIOP Calendar
+ * Version:     1.0.0
+ * Plugin URI:	https://github.com/naiopedmonton/naiop-calendar
+ * GitHub Plugin URI: https://github.com/naiopedmonton/naiop-calendar
+ * Description: Events for NAIOP
+ * Author:      Scott Dohei
+ * Text Domain: naiop-calendar
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/license/gpl-2.0.txt
  * Domain Path: lang
- * Version:     3.5.0-rc2
  */
 
 /*

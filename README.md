@@ -1,4 +1,6 @@
-# My Calendar
+# NAIOP Calendar
+
+Forked from My Calendar: https://github.com/joedolson/my-calendar/
 
 Accessible Event Manager for WordPress
 
