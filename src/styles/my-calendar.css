@@ -1,0 +1,291 @@
+.mc-main, .mc-list {
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    color: #333;
+}
+
+.mc-main .heading, .mc-main .my-calendar-header,
+.mc-main .my-calendar-footer, .mc-main .calendar-event .details,
+.mc-main .calendar-events {
+    background: #edf7ff;
+	padding: 5px;
+	margin: 2px 0;
+}
+
+.mc-main .heading, .mc-main .my-calendar-header, .my-calendar-footer, .mc-main .my-calendar-nav li a:hover {
+    border: 1px solid #a9e3ff;
+}
+
+
+.mc-main .list-event .details, .mc-main td {
+    border: 1px solid #eee;
+}
+
+.mc-main .calendar-event .details, .mc-main .calendar-events {
+    color: #000;
+}
+
+.mc-main .my-calendar-nav li a, .mc-main .calendar-event .details, .mc-main .calendar-events {
+    border: 1px solid #9b5;
+}
+
+.mc-main .list-event .details {
+    background: #fafafa;
+}
+
+.mc-main .nextmonth, .mc-main .nextmonth .weekend {
+    color: #777;
+}
+
+.mc-main .mc-list .odd {
+    background: #d3e3e3;
+}
+
+.mc-main .odd .list-event .details {
+    background: #e3f3f3;
+    border: 1px solid #c3d3d3;
+}
+
+.mc-main .current-day {
+    background: #ffb;
+}
+
+.mc-main .current-day .mc-date {
+    color: #000;
+    background: #eee;
+}
+
+.mc-main .weekend .mc-date {
+    background: #bd7;
+    color: #000;
+}
+
+.mc-main .mc-date {
+    background: #f6f6f6;
+}
+
+.mc-main .my-calendar-nav li a {
+    color: #243f82;
+    background: #fff;
+}
+
+.mc-main .my-calendar-nav li a:hover {
+    color: #000;
+    border: 1px solid #243f82;
+}
+
+.upcoming-events .past-event {
+    color: #777;
+}
+
+.upcoming-events .today {
+    color: #111;
+}
+
+.upcoming-events .future-event {
+    color: #555;
+}
+
+.mc-main .heading {
+    margin: 2px 0;
+    font-weight: 700;
+    padding: 2px;
+}
+
+.mc-main td {
+    padding: 2px !important;
+}
+
+.mini td {
+    height: auto !important;
+}
+
+.mc-main th {
+    text-align: center;
+    padding: 5px 0 !important;
+    letter-spacing: 1px;
+}
+
+.mc-main .event-title, .mc-main .event-title a {
+    display: block;
+    font-size: 12px !important;
+    font-family: Arial, Verdana, sans-serif;
+    font-weight: 700;
+    margin: 2px 0 !important;
+    padding: 1px;
+    border-radius: 3px;
+    text-transform: none;
+}
+
+.mc-main .list-event .event-title {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.mc-main .calendar-event .details, .mc-main .calendar-events {
+	left: 15%;
+    width: 70%;
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px #777;
+    padding: 5px;
+}
+
+.mc-main .details .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.mc-main.mini .details .close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.mc-main .calendar-events {
+    width: 200px !important;
+    left: 0px;
+}
+
+.mc-main .list-event .details {
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 5px 5px 0;
+}
+
+.mc-main .mc-list li {
+    padding: 5px;
+    list-style-type: none;
+    list-style-image: none;
+    margin: 0;
+}
+
+.mc-main .mc-date {
+    display: block;
+    padding: 2px 4px;
+}
+
+.mc-main th {
+    font-size: .8em;
+    text-transform: uppercase;
+    padding: 2px 4px 2px 0;
+}
+
+.mc-list li {
+    text-indent: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.mc-event-date {
+	display: block;
+	font-size: .8em;
+}
+
+.mc-main .calendar-event .event-time, .mc-main .list-event .event-time {
+    height: 100%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: .9em;
+}
+
+.mc-main p {
+    line-height: 1.5;
+    margin: 0 0 1em;
+    padding: 0;
+}
+
+.mc-main .sub-details {
+    margin-left: 7em;
+}
+
+.mc-main .my-calendar-next {
+    margin-left: 4px;
+    text-align: right;
+}
+
+.mc-main .my-calendar-next a {
+    border-radius: 0 8px 8px 0;
+}
+
+nav .my-calendar-nav ul {
+	column-gap: 1px;
+}
+
+.mc-main .my-calendar-today a {
+	border-radius: 0;
+}
+
+.mc-main .my-calendar-prev a {
+    border-radius: 8px 0 0 8px;
+}
+
+.mc-main.mini td .category-icon {
+    display: none;
+}
+
+.mc-main.mini .event-title {
+    font-size: 1.1em;
+}
+
+.mc-main.mini .day-with-date span, .mc-main.mini .day-with-date a {
+    font-size: .9em;
+    padding: 1px;
+    text-align: center;
+}
+
+.mc-main .mini-event .details span, .mc-main .mini-event .details a {
+    text-align: left;
+}
+
+.mc-main .mini-event .sub-details {
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+    padding: 2px 0 0;
+    margin-bottom: 5px;
+}
+
+.mc-main .mini-event .details img {
+    width: 100%;
+}
+
+.mc-main .list-event .details img {
+    width: auto;
+    max-width: 100%;
+}
+
+.mc-main.mini .day-with-date a {
+    display: block;
+    margin: -2px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.mc-main .nextmonth {
+    background: #f6f6f6;
+    color: #888;
+}
+
+.mc-main .nextmonth .event-title {
+    opacity: .7;
+}
+
+.mc-main .nextmonth .mc-date {
+    background: #eee;
+	color: #333;
+}
+
+.mc-main .nextmonth .weekend {
+    color: #888;
+}
+
+.mc-main .vcard {
+    font-size: .9em;
+    background: #f9fbff;
+    padding: .5em;
+    float: right;
+    clear: right;
+    width: 120px;
+}

@@ -1,0 +1,319 @@
+.mc-main .details ul, .mc-main .details ol, .mc-main details li  {
+	margin: .25em 0 .5em 3em;
+}
+
+.mc-main .my-calendar-header input,
+.mc-main .my-calendar-header a,
+.mc-main .mc_bottomnav a {
+	text-decoration: none;
+	box-shadow: inset 0 -1px 0 rgba(15, 15, 15, 1);
+	transition: color 80ms ease-in, box-shadow 130ms ease-in-out;
+}
+
+.mc-main .my-calendar-header a,
+.mc-main .mc_bottomnav a,
+.mc-main .my-calendar-footer select, .mc-main .my-calendar-footer input,
+.mc-main .my-calendar-header select, .mc-main .my-calendar-header input {
+	color: #313233;
+	color: var(--primary-dark);
+	border: 1px solid #efefef;
+	border: 1px solid var(--highlight-light);
+	border-radius: 5px;
+	font-size: 14px !important;
+	font-family: Arial;
+	background: #fff;
+	background: var(--secondary-light);
+}
+.mc-main .my-calendar-footer select, .mc-main .my-calendar-footer input,
+.mc-main .my-calendar-header select, .mc-main .my-calendar-header input {
+	padding-top: 6px !important;
+	padding-bottom: 6px !important;
+}
+
+.mc-main span.category-color-sample {
+	border: none !important;
+}
+
+.mc-main .my-calendar-header input,
+.mc-main .my-calendar-header a,
+.mc-main .mc_bottomnav a {
+	background: linear-gradient(to top, rgba( 210, 210, 210, .95 ) 0%, rgba( 230, 230, 230, .95 ) 70%);
+}
+
+.mc-main .my-calendar-header input:hover, .mc-main .my-calendar-header input:focus,
+.mc-main .my-calendar-header a:hover, .mc-main .mc_bottomnav a:hover,
+.mc-main .my-calendar-header a:focus, .mc-main .mc_bottomnav a:focus {
+	color: #fff;
+	color: var(--primary-light);
+	text-decoration: underline;
+	background: linear-gradient(to bottom, rgba(125, 125, 125, .95) 0%, rgba( 60, 60, 60, .95) 70%);
+}
+
+.mc-main.list .my-calendar-month, .mc-main .heading  {
+	font-size: 24px;
+	color: #666;
+	color: var(--highlight-dark);
+	text-align: right;
+	margin: 0;
+}
+
+.mc-main.mini .heading {
+	font-size: 16px;
+}
+
+.mc-main th {
+	text-transform: uppercase;
+	background: #313233 !important;
+	background: var(--primary-dark) !important;
+	color: #fff !important;
+	color: var(--primary-light) !important;
+}
+
+.mc-main td {
+	border: 1px solid #efefef;
+	border: 1px solid var(--highlight-light);
+}
+
+.mc-main td .event-title {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 13px;
+}
+
+.mc-main .event-title .has-image {
+	padding-left: 24px;
+}
+
+.mc-main .mc-format a:before, .mc-main .mc-format span:before {
+	font-family: dashicons;
+	margin-right: 3px;
+	vertical-align: middle;
+}
+
+.mc-main .mc-format .list:before {
+	content: "\f163";
+}
+
+.mc-main .mc-format .grid:before {
+	content: "\f508";
+}
+
+.mc-main .calendar-event .details, .mc-main .calendar-events {
+	left: 5%;
+	width: 90%;
+	box-shadow: 0 0 4px;
+}
+
+.mc-main .calendar-events {
+	width: 110%;
+	left: -5%;
+}
+
+.mc-main .details {
+	padding: 30px;
+}
+
+.mc-main .single-event .details {
+	padding: 0;
+}
+
+.mc-main.mini .details {
+	padding: 16px;
+	border-top: 1px solid #666;
+	border-top: 1px solid var(--highlight-dark);
+}
+
+.mc-main .mc-list .details {
+	padding: 0;
+}
+
+.mc-main button.close {
+	position: absolute;
+	left: -22px;
+	top: -22px;
+	background: #fff;
+	border-radius: 20px;
+}
+
+/* Date/times */
+.mc-main .time-block {
+	float: right;
+}
+
+.mc-main.mini .time-block {
+	float: none;
+	font-size: 14px;
+}
+
+.mc-main .time-block:before {
+	font-family: dashicons;
+	content: "\f469";
+	vertical-align: top;
+	margin-right: 4px;
+}
+
+.mc-main .mc-date {
+	padding: 0 8px;
+	font-size: 16px;
+	background: #fff;
+	background: var(--primary-light);
+	color: #000;
+	color: var(--secondary-dark);
+}
+
+.mc-main .nextmonth .mc-date {
+	opacity: .7;
+}
+
+.mc-main .current-day .mc-date {
+	background: #000 !important;
+	background: var(--secondary-dark) !important;
+	color: #fff !important;
+	color: var(--secondary-light) !important;
+	box-shadow: inset 0px 0px 0px 2px #666;
+	box-shadow: inset 0px 0px 0px 2px var(--highlight-dark);
+	font-weight: 700;
+	font-style: italic;
+}
+
+.my-calendar-nav .my-calendar-prev a {
+	border-radius: 5px 0 0 5px;
+	border-right: 1px solid #bbb;
+}
+
+.my-calendar-nav .my-calendar-today a {
+	border-radius: 0;
+}
+
+.my-calendar-nav .my-calendar-next a {
+	border-radius: 0 5px 5px 0;
+	border-left: 1px solid #fff;
+}
+
+.mc-main .my-calendar-header .mc-active,
+.mc-main .my-calendar-footer .mc-active {
+	outline-offset: -2px;
+}
+
+.mc-main .mc-format .grid,
+.mc-main .mc-time .month {
+	border-radius: 5px 0 0 5px;
+	border-right: 1px solid #bbb;
+}
+
+.mc-main .mc-format .card,
+.mc-main .mc-time .week {
+	border-radius: 0;
+	border-right: 1px solid #bbb;
+}
+
+.mc-main .mc-format .list,
+.mc-main .mc-time .day {
+	border-radius: 0 5px 5px 0;
+}
+
+nav .mc-format ul, nav .mc-time ul, nav .my-calendar-nav ul {
+	column-gap: 0;
+}
+
+.mc-export .rss a:before {
+	font-family: 'dashicons';
+	vertical-align: middle;
+	margin-right: 3px;
+	content: '\f303';
+}
+
+.mc-export .ics a:before {
+	font-family: 'dashicons';
+	vertical-align: middle;
+	margin-right: 3px;
+	content: '\f508';
+}
+
+/* hCard */
+.mc-main .location {
+	clear: right;
+}
+
+.mc-main .vcard {
+	margin: 0 0 1em 1em;
+	float: right;
+	padding: 10px;
+	width: 250px;
+	max-width: 50%;
+	font-size: 14px;
+	background: rgba( 0, 0, 0, .05 );
+}
+
+.mc-main.mini .vcard {
+	margin: 15px 0;
+	float: none;
+	width: 100%;
+	max-width: 100%;
+}
+
+
+/* List View */
+.mc-list .current-day .event-date:before {
+	content: "\f345";
+	margin-right: 5px;
+	font-family: dashicons;
+	vertical-align: middle;
+	margin-left: -5px;
+}
+
+.mc-main .mc-list .mc-events {
+	list-style-type: none !important;
+	padding: 10px;
+	margin: 0;
+}
+
+.mc-main .mc-list .mc-events.even {
+	padding: 10px;
+	background: rgba( 0,0,0,.03 );
+}
+
+.mc-main .list-event .event-title {
+	margin: 0 0 1em!important;
+}
+
+.mc-main .details .sharing {
+	clear: both;
+}
+
+.mc-main .sharing p {
+	display: inline-block;
+	padding: .5em .5em .5em 0;
+}
+
+.mc-main.mini .sharing p {
+	font-size: 14px;
+	padding: 0 .25em 0 0;
+	margin-bottom: 10px;
+}
+
+.mc-main .sharing .ical a:before, .mc-main .sharing .gcal a:before {
+	font-family: 'dashicons';
+	content: "\f502";
+	margin-right: 3px;
+	vertical-align: middle;
+}
+
+.mc-main .sharing .mc-details a:before {
+	font-family: 'dashicons';
+	content: "\f242";
+	margin-right: 3px;
+	vertical-align: middle;
+}
+
+.mc-main .mc-list .event-date {
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.mc-main .list-event {
+	border-top: 1px solid #d1d1d1;
+	margin: .5em -10px;
+	padding: 1em;
+	clear: both;
+}
