@@ -2,10 +2,6 @@
 
 Forked from My Calendar: https://github.com/joedolson/my-calendar/
 
-Accessible Event Manager for WordPress
-
-[![Code Linting](https://github.com/joedolson/my-calendar/actions/workflows/main.yml/badge.svg)](https://github.com/joedolson/my-calendar/actions/workflows/main.yml) [![PHP Unit Tests](https://github.com/joedolson/my-calendar/actions/workflows/phpunit.yml/badge.svg)](https://github.com/joedolson/my-calendar/actions/workflows/phpunit.yml) ![Docs Built](https://github.com/joedolson/my-calendar/actions/workflows/build-docs.yml/badge.svg)  [![License](https://img.shields.io/badge/license-GPL--2.0%2B-green.svg)](https://www.gnu.org/license/gpl-2.0.html)
-
 ## My Calendar Build Environment
 
 * Donate link: https://www.joedolson.com/donate/
