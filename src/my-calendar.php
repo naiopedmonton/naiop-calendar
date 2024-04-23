@@ -408,9 +408,10 @@ function mc_has_migration_path() {
 function my_calendar_menu() {
 	if ( function_exists( 'add_menu_page' ) ) {
 		if ( 'true' !== mc_get_option( 'remote' ) ) {
-			add_menu_page( __( 'My Calendar', 'my-calendar' ), __( 'My Calendar', 'my-calendar' ), 'mc_add_events', apply_filters( 'mc_modify_default', 'my-calendar' ), apply_filters( 'mc_modify_default_cb', 'my_calendar_edit' ), 'dashicons-calendar' );
+			$newName = apply_filters( 'naiop_calendar_name', 'My Calendar' );
+			add_menu_page( __( $newName, 'my-calendar' ), __( $newName, 'my-calendar' ), 'mc_add_events', apply_filters( 'mc_modify_default', 'my-calendar' ), apply_filters( 'mc_modify_default_cb', 'my_calendar_edit' ), 'dashicons-calendar' );
 		} else {
-			add_menu_page( __( 'My Calendar', 'my-calendar' ), __( 'My Calendar', 'my-calendar' ), 'mc_edit_settings', 'my-calendar', 'my_calendar_settings', 'dashicons-calendar' );
+			add_menu_page( __( $newName, 'my-calendar' ), __( $newName, 'my-calendar' ), 'mc_edit_settings', 'my-calendar', 'my_calendar_settings', 'dashicons-calendar' );
 		}
 	}
 	if ( function_exists( 'add_submenu_page' ) ) {
