@@ -147,6 +147,7 @@ function mc_globals( $data = 'all' ) {
  event_fifth_week INT(1) NOT NULL DEFAULT '$event_fifth_week',
  event_image TEXT,
  event_added TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ event_product BIGINT(20) UNSIGNED,
  PRIMARY KEY  (event_id),
  KEY event_category (event_category)
  ) $charset_collate;";
