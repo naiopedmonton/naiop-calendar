@@ -57,7 +57,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
     }
 
     if ($product) {
-        $product->set_name($data["event_title"]);
+        $product->set_name($data["event_title"] . (is_object($event) ? "true" : "false"));
         $product->set_description($data["event_desc"]);
         $product->set_short_description($data["event_short"]);
         $product->set_sold_individually(true);
