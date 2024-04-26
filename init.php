@@ -4,7 +4,7 @@
  *
  * @wordpress-plugin
  * Plugin Name: NAIOP Calendar
- * Version:     1.2.7
+ * Version:     1.2.8
  * Plugin URI:	https://github.com/naiopedmonton/naiop-calendar
  * GitHub Plugin URI: https://github.com/naiopedmonton/naiop-calendar
  * Description: Events for NAIOP

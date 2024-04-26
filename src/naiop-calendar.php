@@ -53,7 +53,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
 
     if ($product) {
         $product->set_name($data["event_title"]);
-        $product->set_description($data["event_desc"]);
+        /*$product->set_description($data["event_desc"]);
         $product->set_short_description($data["event_short"]);
         $product->set_sold_individually(true);
         $product->set_catalog_visibility('hidden');
@@ -61,7 +61,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
         $product->set_regular_price('59');
         if ($attachment_id) {
             $product->set_image_id($attachment_id);
-        }
+        }*/
         $product->save();
     
         if ($action === "add") {
