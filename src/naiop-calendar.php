@@ -46,7 +46,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
     $product = null;
     if ($action === "edit") {
         $event = mc_get_event($event_id);
-        if (property_exists($event, 'event_product')) {
+        if ($event) {
             error_log("event product id = " . $event->event_product);
             $product = wc_get_product($event->event_product);
         } else {
@@ -57,7 +57,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
     }
 
     if ($product) {
-        $product->set_name($data["event_title"]);
+        $product->set_name($data["event_title"] . print_r($event, true));
         $product->set_description($data["event_desc"]);
         $product->set_short_description($data["event_short"]);
         $product->set_sold_individually(true);
