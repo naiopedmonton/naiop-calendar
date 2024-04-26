@@ -53,7 +53,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
         if (!is_null($event)) {
             $product = wc_get_product($event->event_product);
             $product_id = $product->get_id();
-            $product_id .= " ss " . $event['event_product'];
+            $product_id .= " ss " . $event->event_product;
         } else {
             $product_id = $event_id;
         }
