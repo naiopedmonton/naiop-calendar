@@ -44,7 +44,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
 
     $event = null;
     $product = null;
-    if ($action === "edit" && mc_valid_id($event_id)) {
+    if ($action === "edit") {
         $event = mc_get_event($event_id);
         if (is_object($event) && property_exists($event, 'event_product')) {
             error_log("event product id = " . $event->event_product);
