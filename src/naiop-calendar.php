@@ -44,7 +44,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
 
     $event = null;
     $product = null;
-    if ($action === "edit") {
+    if ('edit' === $action) {
         $event = mc_get_event($event_id);
         $product = wc_get_product($event->event_product);
     } else {
@@ -64,9 +64,9 @@ function naiop_save_event($action, $data, $event_id, $result) {
         }*/
         $product->save();
     
-        if ($action === "add") {
-            mc_update_data($event_id, 'event_product', $product->get_id());
-        }
+        //if ($action === "add") {
+        mc_update_data($event_id, 'event_product', $product->get_id());
+        //}
     }
 }
 
