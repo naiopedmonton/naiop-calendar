@@ -65,7 +65,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
         // TODO price
         $product->set_regular_price('59');
         if ($attachment_id) {
-            $product->set_image_id(attachment_id);
+            $product->set_image_id($attachment_id);
         }
         $product->save();
     
