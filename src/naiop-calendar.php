@@ -24,8 +24,23 @@ add_action('mc_save_event', 'naiop_save_event', 10, 4);
  * @param int    $result Result of calendar save query.
  */
 function naiop_save_event($action, $data, $event_id, $result) {
-    $product = "";
-    error_log($action . " data: " . print_r($data, true));
+    $post_post = isset( $_POST['post'] ) ? $_POST['post'] : array();
+	$post_data = ( wp_doing_ajax() && ! empty( $_POST ) ) ? $post_post : $_POST;
+	if ( $post_data !== $_POST && is_string( $post_data ) ) {
+		parse_str( $post_data, $post );
+	} else {
+		$post = $post_data;
+	}
+	$post = map_deep( $post_data, 'wp_kses_post' );
+    
+    $attachment_id = false;
+    if ( isset( $post['event_image_id'] ) ) {
+        $attachment_id = (int) $post['event_image_id'];
+    } elseif ( isset( $data['event_image_id'] ) ) {
+        $attachment_id = (int) $data['event_image_id'];
+    }
+
+    //error_log($action . " data: " . print_r($data, true));
 
     $event = null;
     $product = null;
@@ -33,22 +48,29 @@ function naiop_save_event($action, $data, $event_id, $result) {
         $event = mc_get_event($event_id);
         if (is_object($event) && $event->event_product) {
             $product = wc_get_product($event->event_product);
+        } else {
+            $product = new WC_Product_Simple();
         }
     } else {
         // construct a hidden WooCom product for the event
         $product = new WC_Product_Simple();
     }
 
-    $product->set_name($data["event_title"]);
-    $product->set_description($data["event_desc"]);
-    $product->set_short_description($data["event_short"]);
-    $product->set_sold_individually(true);
-    $product->set_catalog_visibility('hidden');
-    // TODO price
-    $product->set_regular_price('59');
-    $product->save();
-
-    if ($action === "add" && $event_id && $product->get_id()) {
-        mc_update_data($event_id, 'event_product', $product->get_id());
-    }  
+    if ($product) {
+        $product->set_name($data["event_title"]);
+        $product->set_description($data["event_desc"]);
+        $product->set_short_description($data["event_short"]);
+        $product->set_sold_individually(true);
+        $product->set_catalog_visibility('hidden');
+        // TODO price
+        $product->set_regular_price('59');
+        if ($attachment_id) {
+            $product->set_image_id(attachment_id);
+        }
+        $product->save();
+    
+        if ($action === "add" && $event_id && $product->get_id()) {
+            mc_update_data($event_id, 'event_product', $product->get_id());
+        }
+    }
 }
