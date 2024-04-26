@@ -46,18 +46,13 @@ function naiop_save_event($action, $data, $event_id, $result) {
     $product = null;
     if ($action === "edit") {
         $event = mc_get_event($event_id);
-        if ($event) {
-            error_log("event product id = " . $event->event_product);
-            $product = wc_get_product($event->event_product);
-        } else {
-            //$product = new WC_Product_Simple();
-        }
+        $product = wc_get_product($event->event_product);
     } else {
         $product = new WC_Product_Simple();
     }
 
     if ($product) {
-        $product->set_name($data["event_title"] . print_r($event, true));
+        $product->set_name($data["event_title"]);
         $product->set_description($data["event_desc"]);
         $product->set_short_description($data["event_short"]);
         $product->set_sold_individually(true);
