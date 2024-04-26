@@ -40,7 +40,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
         $attachment_id = (int) $data['event_image_id'];
     }
 
-    //error_log($action . " data: " . print_r($data, true));
+    //error_log($action . $event_id . " data: " . print_r($data, true));
 
     $event = null;
     $product = null;
@@ -50,7 +50,7 @@ function naiop_save_event($action, $data, $event_id, $result) {
             error_log("event product id = " . $event->event_product);
             $product = wc_get_product($event->event_product);
         } else {
-            $product = new WC_Product_Simple();
+            //$product = new WC_Product_Simple();
         }
     } else {
         $product = new WC_Product_Simple();
@@ -73,4 +73,69 @@ function naiop_save_event($action, $data, $event_id, $result) {
             mc_update_data($event_id, 'event_product', $product->get_id());
         }
     }
+}
+
+add_shortcode( 'naiop_upcoming', 'naiop_upcoming_events' );
+
+/**
+ * Upcoming Events My Calendar shortcode.
+ *
+ * @param array $atts Shortcode attributes.
+ *
+ * @return string Calendar.
+ */
+function naiop_upcoming_events( $atts ) {
+	$args = shortcode_atts(
+		array(
+			'before'         => 'default',
+			'after'          => '90',
+			'type'           => 'default',
+			'category'       => 'default',
+			'template'       => 'default',
+			'fallback'       => '',
+			'order'          => 'asc',
+			'skip'           => '0',
+			'show_recurring' => 'yes',
+			'author'         => 'default',
+			'host'           => 'default',
+			'ltype'          => '',
+			'lvalue'         => '',
+			'from'           => false,
+			'to'             => false,
+			'site'           => false,
+			'language'       => '',
+		),
+		$atts,
+		'my_calendar_upcoming'
+	);
+
+	global $user_ID;
+	if ( 'current' === $args['author'] ) {
+		/**
+		 * Filter the author parameter for a My Calendar view if set as 'current'. Default current user ID.
+		 *
+		 * @hook mc_display_author
+		 *
+		 * @param {int} $user_ID Logged-in user ID.
+		 * @param {string} $context 'upcoming' to indicate the `my_calendar_upcoming` shortcode is running.
+		 *
+		 * @return {int} Valid author ID.
+		 */
+		$args['author'] = apply_filters( 'mc_display_author', $user_ID, 'upcoming' );
+	}
+	if ( 'current' === $args['host'] ) {
+		/**
+		 * Filter the host parameter for a My Calendar view if set as 'current'. Default current user ID.
+		 *
+		 * @hook mc_display_host
+		 *
+		 * @param {int} $user_ID Logged-in user ID.
+		 * @param {string} $context 'upcoming' to indicate the `my_calendar_upcoming` shortcode is running.
+		 *
+		 * @return {int} Valid author ID.
+		 */
+		$args['host'] = apply_filters( 'mc_display_host', $user_ID, 'upcoming' );
+	}
+
+	return my_calendar_upcoming_events( $args );
 }
