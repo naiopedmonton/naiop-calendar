@@ -24,14 +24,31 @@ add_action('mc_save_event', 'naiop_save_event', 10, 4);
  * @param int    $result Result of calendar save query.
  */
 function naiop_save_event($action, $data, $event_id, $result) {
-    $product = new WC_Product_Simple();
+    $product = "";
+    error_log($action . " data: " . print_r($data, true));
+
+    $event = null;
+    $product = null;
+    if ($action === "edit" && $event_id) {
+        $event = mc_get_event($event_id);
+        if (is_object($event) && $event->event_product) {
+            $product = wc_get_product($event->event_product);
+        }
+    } else {
+        // construct a hidden WooCom product for the event
+        $product = new WC_Product_Simple();
+    }
+
     $product->set_name($data["event_title"]);
     $product->set_description($data["event_desc"]);
-    
-    $product->set_regular_price('50');
+    $product->set_short_description($data["event_short"]);
     $product->set_sold_individually(true);
     $product->set_catalog_visibility('hidden');
+    // TODO price
+    $product->set_regular_price('59');
     $product->save();
 
-    mc_update_data($event_id, 'event_product', $product->get_id());
+    if ($action === "add" && $event_id && $product->get_id()) {
+        mc_update_data($event_id, 'event_product', $product->get_id());
+    }  
 }
