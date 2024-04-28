@@ -571,7 +571,7 @@ function mc_produce_upcoming_events( $events, $template, $type = 'list', $order 
 		if ( 'card' === $template ) {
 			$details = '<li class="card-event"><h3>' . mc_load_template( 'event/card-title', $data ) . '</h3>' . mc_load_template( 'event/card', $data ) . '</li>';
 		} else {
-			$details = mc_load_template( 'event/upcoming', $data );
+			$details = mc_load_template( apply_filters('naiop_upcoming_event_template', 'event/upcoming'), $data );
 		}
 		if ( ! $details ) {
 			$html .= mc_format_upcoming_event( $out, $template, $type );

@@ -192,3 +192,29 @@ function naiop_upcoming_events( $atts ) {
 
 	return my_calendar_upcoming_events( $args );
 }
+
+add_filter('mc_upcoming_events_template', 'naiop_upcoming_template');
+function naiop_upcoming_template($object) {
+    $out = '<div class="wp-block-obb-icon-block organic-block obb-icon-box obb-orientation-vertical obb-vertical-align-center">';
+        $out .= '<h3>{daterange}</h3>';
+        $out .= '<p><strong>{timerange}</strong></p>';
+        $out .= '{linking_title}';
+    $out .= '</div>';
+    return $out;
+}
+
+add_filter('naiop_upcoming_event_template', 'naiop_upcoming_event_template');
+function naiop_upcoming_event_template($template) {
+    return 'event/naiop_upcoming';
+}
+
+add_filter('mc_upcoming_events_header', 'naiop_upcoming_header');
+function naiop_upcoming_header($header) {
+    return '<div class="wp-block-columns alignwide is-layout-flex wp-container-core-columns-is-layout-2 wp-block-columns-is-layout-flex">';
+}
+
+add_filter('mc_upcoming_events_footer', 'naiop_upcoming_footer');
+function naiop_upcoming_footer($footer) {
+    return '</div>';
+}
+
