@@ -40,7 +40,25 @@ function naiop_save_event($action, $data, $event_id, $result) {
         $attachment_id = (int) $data['event_image_id'];
     }
 
-    //error_log($action . $event_id . " data: " . print_r($data, true));
+    $ticket_info = get_post_registration_options($post);
+    $price = 0;
+    $total_quantity = 0;
+    if ($ticket_info) {
+        if ($ticket_info['prices']) {
+            foreach ( $ticket_info['prices'] as $name => $value ) {
+                if ($name !== "complimentary" || $value['price'] > 0) {
+                    $price = $value['price'];
+                    break;
+                }
+            }
+        }
+        if ($ticket_info['total']) {
+            $total_quantity = $ticket_info['total'];
+        }
+    }
+
+    //error_log($action . " " . $event_id . " data: " . print_r($data, true));
+    //var_dump($ticket_info);
 
     $event = null;
     $product = null;
@@ -62,8 +80,9 @@ function naiop_save_event($action, $data, $event_id, $result) {
         $product->set_short_description($data["event_short"]);
         $product->set_sold_individually(true);
         $product->set_catalog_visibility('hidden');
-        // TODO price
-        $product->set_regular_price('59');
+        $product->set_regular_price($price);
+        $product->set_manage_stock(true);
+        $product->set_stock_quantity($total_quantity);
         if ($attachment_id) {
             $product->set_image_id($attachment_id);
         }
@@ -75,8 +94,42 @@ function naiop_save_event($action, $data, $event_id, $result) {
     }
 }
 
-add_shortcode( 'naiop_upcoming', 'naiop_upcoming_events' );
+function get_post_registration_options($post) {
+    if ( isset( $post['mt_label'] ) ) {
+		//$reg_data        = get_post_meta( $post_id, '_mt_registration_options', true );
+		$event_begin     = ( isset( $post['event_begin'] ) ) ? $post['event_begin'] : '';
+		$event_begin     = ( is_array( $event_begin ) ) ? $event_begin[0] : $event_begin;
+		$labels          = ( isset( $post['mt_label'] ) ) ? $post['mt_label'] : array();
+		$times           = ( isset( $post['mt_label_time'] ) ) ? $post['mt_label_time'] : array();
+		$prices          = ( isset( $post['mt_price'] ) ) ? $post['mt_price'] : array();
+		$sold            = ( isset( $post['mt_sold'] ) ) ? $post['mt_sold'] : array();
+		$close           = ( isset( $post['mt_close'] ) ) ? $post['mt_close'] : mt_close_times( $labels, $times );
+		$hide            = ( isset( $post['mt_hide_registration_form'] ) ) ? 'true' : 'false';
+		$availability    = ( isset( $post['mt_tickets'] ) ) ? $post['mt_tickets'] : 'inherit';
+		$total_tickets   = ( isset( $post['mt_tickets_total'] ) ) ? $post['mt_tickets_total'] : 'inherit';
+		$pricing_array   = mt_setup_pricing( $labels, $prices, $availability, $close, $sold, $times );
+		$reg_expires     = ( isset( $post['reg_expires'] ) ) ? (int) $post['reg_expires'] : 0;
+		$multiple        = ( isset( $post['mt_multiple'] ) ) ? 'true' : 'false';
+		$mt_sales_type   = ( isset( $post['mt_sales_type'] ) ) ? $post['mt_sales_type'] : 'tickets';
+		$counting_method = ( isset( $post['mt_counting_method'] ) ) ? $post['mt_counting_method'] : 'discrete';
+		$counting_method = ( isset( $post['mt_general'] ) && 'general' === $post['mt_general'] ) ? 'general' : $counting_method;
+		$sell            = ( isset( $post['mt-trigger'] ) ) ? 'true' : 'false';
+		$notes           = ( isset( $post['mt_event_notes'] ) ) ? $post['mt_event_notes'] : '';
+		$clear           = ( isset( $post['mt-delete-data'] ) ) ? true : false;
+		$registration_options = array(
+			'reg_expires'     => $reg_expires,
+			'sales_type'      => $mt_sales_type,
+			'counting_method' => $counting_method,
+			'prices'          => $pricing_array,
+			'total'           => $total_tickets,
+			'multiple'        => $multiple,
+		);
+        return $registration_options;
+	}
+    return array();
+}
 
+add_shortcode( 'naiop_upcoming', 'naiop_upcoming_events' );
 /**
  * Upcoming Events My Calendar shortcode.
  *
