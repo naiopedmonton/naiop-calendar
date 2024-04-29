@@ -11,5 +11,6 @@
 
 ?>
 <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+	<?php mc_template_image( $data, 'calendar' ); ?>
 	<?php mc_template( $data->tags, $data->template, 'list' ); ?>
 </div>

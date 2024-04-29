@@ -218,3 +218,8 @@ function naiop_upcoming_footer($footer) {
     return '</div>';
 }
 
+add_filter('naiop_custom_sidebar_panels', 'naiop_custom_sidebar_panels');
+function naiop_custom_sidebar_panels($footer) {
+    return true;
+}
+

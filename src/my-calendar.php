@@ -331,6 +331,7 @@ function mc_show_sidebar( $show = '', $add = false, $remove = false ) {
 				<?php
 			}
 		}
+		$remove = apply_filters( 'naiop_custom_sidebar_panels', $remove );
 		if ( ! $remove ) {
 			if ( ! function_exists( 'mcs_submissions' ) ) {
 				?>
