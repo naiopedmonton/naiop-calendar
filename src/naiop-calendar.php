@@ -140,9 +140,9 @@ add_shortcode( 'naiop_upcoming', 'naiop_upcoming_events' );
 function naiop_upcoming_events( $atts ) {
 	$args = shortcode_atts(
 		array(
-			'before'         => 'default',
-			'after'          => '90',
-			'type'           => 'default',
+			'before'         => '0',
+			'after'          => '3',
+			'type'           => 'event',
 			'category'       => 'default',
 			'template'       => 'default',
 			'fallback'       => '',
