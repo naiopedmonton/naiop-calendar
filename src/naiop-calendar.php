@@ -78,7 +78,6 @@ function naiop_save_event($action, $data, $event_id, $result) {
         $product->set_name($data["event_title"]);
         $product->set_description($data["event_desc"]);
         $product->set_short_description($data["event_short"]);
-        $product->set_sold_individually(true);
         $product->set_catalog_visibility('hidden');
         $product->set_regular_price($price);
         $product->set_manage_stock(true);
