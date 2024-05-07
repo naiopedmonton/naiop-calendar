@@ -60,6 +60,8 @@ function naiop_save_event($action, $data, $event_id, $result) {
     //error_log($action . " " . $event_id . " data: " . print_r($data, true));
     //var_dump($ticket_info);
 
+	return;
+
     $event = null;
     $product = null;
     if ('edit' === $action) {
