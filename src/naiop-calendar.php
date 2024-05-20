@@ -14,6 +14,11 @@ function naiop_calendar_name($object) {
     return "NAIOP Calendar";
 }
 
+add_filter('mc_location_events_link', 'naiop_location_link');
+function naiop_location_link($object) {
+    return "";
+}
+
 add_action('mc_save_event', 'naiop_save_event', 10, 4);
 /**
  * Create a WooCommerce product for the Event
