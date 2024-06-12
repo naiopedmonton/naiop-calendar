@@ -300,6 +300,10 @@ function mc_canonical() {
  * @param boolean       $remove Hide commercial blocks.
  */
 function mc_show_sidebar( $show = '', $add = false, $remove = false ) {
+	$remove = apply_filters( 'naiop_custom_sidebar_panels', $remove );
+	if ($remove) {
+		return;
+	}
 	/**
 	 * Inject a sidebar panel in the My Calendar admin. Does not replace existing panels.
 	 *
@@ -331,46 +335,43 @@ function mc_show_sidebar( $show = '', $add = false, $remove = false ) {
 				<?php
 			}
 		}
-		$remove = apply_filters( 'naiop_custom_sidebar_panels', $remove );
-		if ( ! $remove ) {
-			if ( ! function_exists( 'mcs_submissions' ) ) {
-				?>
-				<div class="ui-sortable meta-box-sortables">
-					<div class="postbox mc-support-me promotion">
-						<h2><strong><?php esc_html_e( 'My Calendar Pro', 'my-calendar' ); ?></strong></h2>
+		if ( ! function_exists( 'mcs_submissions' ) ) {
+			?>
+			<div class="ui-sortable meta-box-sortables">
+				<div class="postbox mc-support-me promotion">
+					<h2><strong><?php esc_html_e( 'My Calendar Pro', 'my-calendar' ); ?></strong></h2>
 
-						<div class="inside resources mc-flex">
-							<img src="<?php echo plugins_url( 'images/awd-logo-disc.png', __FILE__ ); ?>" alt="Joe Dolson Accessible Web Design" />
-							<p>
-							<?php
-							// Translators: URL for My Calendar Pro.
-							printf( __( "Buy <a href='%s' rel='external'>My Calendar Pro</a> &mdash; a more powerful calendar for your site.", 'my-calendar' ), 'https://www.joedolson.com/my-calendar/pro/' );
-							?>
-							</p>
-						</div>
+					<div class="inside resources mc-flex">
+						<img src="<?php echo plugins_url( 'images/awd-logo-disc.png', __FILE__ ); ?>" alt="Joe Dolson Accessible Web Design" />
+						<p>
+						<?php
+						// Translators: URL for My Calendar Pro.
+						printf( __( "Buy <a href='%s' rel='external'>My Calendar Pro</a> &mdash; a more powerful calendar for your site.", 'my-calendar' ), 'https://www.joedolson.com/my-calendar/pro/' );
+						?>
+						</p>
 					</div>
 				</div>
-				<?php
-			}
-			if ( ! function_exists( 'mt_update_check' ) ) {
-				?>
-				<div class="ui-sortable meta-box-sortables">
-					<div class="postbox sell my-tickets">
-						<h2 class='sales'><strong><?php esc_html_e( 'My Tickets', 'my-calendar' ); ?></strong></h2>
+			</div>
+			<?php
+		}
+		if ( ! function_exists( 'mt_update_check' ) ) {
+			?>
+			<div class="ui-sortable meta-box-sortables">
+				<div class="postbox sell my-tickets">
+					<h2 class='sales'><strong><?php esc_html_e( 'My Tickets', 'my-calendar' ); ?></strong></h2>
 
-						<div class="inside resources">
-							<p class="mcbuy">
-							<?php
-							// Translators: URL to view details about My Tickets.
-							printf( __( 'Do you sell tickets to your events? <a href="%s" class="thickbox open-plugin-details-modal" rel="external">Use My Tickets</a> and sell directly from My Calendar.', 'my-calendar' ), admin_url( 'plugin-install.php?tab=plugin-information&plugin=my-tickets&TB_iframe=true&width=600&height=550' ) );
-							?>
-							</p>
+					<div class="inside resources">
+						<p class="mcbuy">
+						<?php
+						// Translators: URL to view details about My Tickets.
+						printf( __( 'Do you sell tickets to your events? <a href="%s" class="thickbox open-plugin-details-modal" rel="external">Use My Tickets</a> and sell directly from My Calendar.', 'my-calendar' ), admin_url( 'plugin-install.php?tab=plugin-information&plugin=my-tickets&TB_iframe=true&width=600&height=550' ) );
+						?>
+						</p>
 
-						</div>
 					</div>
 				</div>
-				<?php
-			}
+			</div>
+			<?php
 		}
 		?>
 		<div class="ui-sortable meta-box-sortables">
