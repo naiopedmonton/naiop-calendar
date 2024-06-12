@@ -780,6 +780,7 @@ function mc_list_events() {
 					$col_head .= mc_table_header( __( 'Author', 'my-calendar' ), $sortbydirection, $sortby, '5', $url );
 					$url       = add_query_arg( 'sort', '6', $admin_url );
 					$col_head .= mc_table_header( __( 'Category', 'my-calendar' ), $sortbydirection, $sortby, '6', $url );
+					$col_head = apply_filters( 'naiop_event_headers', $col_head );
 					echo mc_kses_post( $col_head );
 					?>
 					</tr>
@@ -999,6 +1000,9 @@ function mc_admin_events_table( $events ) {
 				</td>
 				<td>
 				<?php echo mc_admin_category_list( $event ); ?>
+				</td>
+				<td class="naiop_event_report_col">
+					<?php echo apply_filters( 'naiop_event_report_column', $event ); ?>
 				</td>
 			</tr>
 			<?php

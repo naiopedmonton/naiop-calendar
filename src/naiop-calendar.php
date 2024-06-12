@@ -19,6 +19,35 @@ function naiop_location_link($object) {
     return "";
 }
 
+/* add report column */
+add_filter( 'naiop_event_headers', 'naiop_event_headers', 10, 1 );
+function naiop_event_headers($headers) {
+	return $headers . '<th scope="col">' . "Report" . '</th>';
+}
+
+/* add link to generate report */
+add_filter( 'naiop_event_report_column', 'naiop_event_report_column', 10, 1 );
+function naiop_event_report_column($event) {
+	$report_url = admin_url( "admin.php?naiop_event_report=$event->event_id" );
+	return "<a href='$report_url'><div class='dashicons dashicons-download'></div>Generate!</a>";
+}
+
+function handle_report_request() {
+	if (isset($_GET['naiop_event_report'])) {
+		header("Pragma: public");
+		header("Expires: 0");
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+		header("Cache-Control: private", false);
+		header("Content-Type: application/octet-stream");
+		header("Content-Disposition: attachment; filename=\"report.csv\";");
+		header("Content-Transfer-Encoding: binary");
+
+		echo "hello " . $_GET['naiop_event_report'];
+		exit;
+	}
+}
+handle_report_request();
+
 add_shortcode( 'naiop_upcoming', 'naiop_upcoming_events' );
 /**
  * Upcoming Events My Calendar shortcode.
