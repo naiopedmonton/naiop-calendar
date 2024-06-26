@@ -67,7 +67,7 @@ function handle_report_request() {
 			}
 		}
 
-		$val = "Order ID,First Name,Last Name,Email,Dietary Restrictions\n";
+		$val = "Order ID,Ticket Type,Price,First Name,Last Name,Email,Dietary Restrictions\n";
 		$registered_count = 0;
 		$processed_orders = array();
 		foreach( $product_ids as $pid ) {
@@ -78,6 +78,22 @@ function handle_report_request() {
 						continue;
 					}
 					$order = wc_get_order( $order_id );
+
+					$type_data = array();
+					$type_meta = $order->get_meta( 'naiop_event_ticket_type', false );
+					foreach ($type_meta as $metadata) {
+						if ( is_array($metadata->get_data()['value']) ) {
+							$type_data = $metadata->get_data()['value'];
+						}
+					}
+					
+					$price_data = array();
+					$price_meta = $order->get_meta( 'naiop_event_ticket_price', false );
+					foreach ($price_meta as $metadata) {
+						if ( is_array($metadata->get_data()['value']) ) {
+							$price_data = $metadata->get_data()['value'];
+						}
+					}
 
 					$fname_data = array();
 					$fname_meta = $order->get_meta( 'naiop_event_fname', false );
@@ -109,11 +125,17 @@ function handle_report_request() {
 					}
 
 					$count = count($fname_data);
+					if ( count($type_data) < count($fname_data) ) {
+						$type_data = array_fill(0, count($fname_data), "");
+					}
+					if ( count($price_data) < count($fname_data) ) {
+						$price_data = array_fill(0, count($fname_data), "");
+					}
 					$registered_count += $count;
 					for ($x = 0; $x < $count; $x++) {
-						$val .= $order_id . ',' . $fname_data[$x] . ',' . $lname_data[$x] . ',' . $email_data[$x] . ',' . $diet_data[$x] . "\n";
+						$val .= $order_id . ',' . $type_data[$x] . ',' . $price_data[$x] . ',' . $fname_data[$x] . ',' . $lname_data[$x] . ',' . $email_data[$x] . ',' . $diet_data[$x] . "\n";
 					}
-					
+
 					array_push($processed_orders, $order_id);
 				}
 			}
