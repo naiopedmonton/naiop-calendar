@@ -29,6 +29,13 @@ function naiop_event_headers($headers) {
 add_filter( 'naiop_event_report_column', 'naiop_event_report_column', 10, 1 );
 function naiop_event_report_column($event) {
 	$report_url = admin_url( "admin.php?naiop_event_report=$event->event_id" );
+
+	$post_id = $event->event_post;
+	$registration = get_post_meta( $post_id, '_mt_registration_options', true );
+	if ( empty( $registration['prices'] ) ) {
+		return "Ticketing Disabled";
+	}
+
 	return "<a href='$report_url'><div class='dashicons dashicons-download'></div>Generate!</a>";
 }
 
@@ -61,6 +68,12 @@ function handle_report_request() {
 		$post_id = mc_get_event_post( $event_id );
 		$registration = get_post_meta( $post_id, '_mt_registration_options', true );
 		$product_ids = array();
+
+		if ( empty( $registration['prices'] ) ) {
+			echo "TiCKETING NOT ENABLED\n";
+			return;
+		}
+
 		foreach( $registration['prices'] as $price_type => $price_config ) {
 			if ( isset($price_config['product_id']) ) {
 				array_push($product_ids, $price_config['product_id']);
